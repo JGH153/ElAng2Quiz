@@ -1,0 +1,43 @@
+<nav class="navbar navbar-inverse">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		<a class="navbar-brand" [routerLink]="['QuizWelcome']" href="javascript:void(0)">Birdid Angular 2 Quiz</a>
+		</div>
+		<div id="navbar" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+
+				<li [ngClass]="{active: subIsActive(0)}" [routerLink]="['QuizCompetitionGroup']"><a href="javascript:void(0)">Competition group</a></li>
+				<li [ngClass]="{active: subIsActive(1)}" [routerLink]="['QuizMediaSelect']"><a href="javascript:void(0)">New Quiz</a></li>
+				<li [ngClass]="{active: subIsActive(2)}" [routerLink]="['QuizMediaAdditionalSettings']"><a href="javascript:void(0)">Additional Settings</a></li>
+				<li [ngClass]="{active: subIsActive(3)}" [routerLink]="['QuizSelectSpecies']"><a href="javascript:void(0)">Select Species</a></li>
+				<li [ngClass]="{active: subIsActive(4)}" [routerLink]="['QuizMediaQuiz']"><a href="javascript:void(0)">The Quiz</a></li>
+				<li [ngClass]="{active: subIsActive(5)}" [routerLink]="['QuizMediaQuizResults']"><a href="javascript:void(0)">Results</a></li>
+				<li [ngClass]="{active: subIsActive(6)}" [routerLink]="['QuizMediaQuizSummary']"><a href="javascript:void(0)">Quiz Summary</a></li>
+				<li [ngClass]="{active: subIsActive(7)}" [routerLink]="['QuizFormalTestStart']"><a href="javascript:void(0)">Formal test start</a></li>
+				<li [ngClass]="{active: subIsActive(8)}" [routerLink]="['QuizFormalTestEnd']"><a href="javascript:void(0)">Formal test end</a></li>
+
+
+			</ul>
+		</div><!--/.nav-collapse -->
+	</div>
+</nav>
+
+<div class="jumbotron">
+	<div *ngIf="!asyncDataLoadError && !asyncDataLoaded">
+		<img src="loading.gif" alt="Loading..." height="200" width="200">
+	</div>
+
+	<div *ngIf="asyncDataLoaded">
+		<router-outlet></router-outlet>
+	</div>
+	<div *ngIf="asyncDataLoadError" class="alert alert-danger">
+		<h1>Server communication problems!</h1>
+	</div>
+</div>

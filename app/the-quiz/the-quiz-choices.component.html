@@ -1,0 +1,27 @@
+<div *ngFor="let current of specieQuestionObject.getChoices(); let i=index" >
+	<button
+		class="btn btn-primary"
+		style="margin: 5px"
+		[disabled]="selectAnswerDisabled()"
+		[ngClass]="{	'btn-success': checkIfButtonColorIsCorrect(current.id),
+						'btn-danger':  checkIfButtonColorIsWrong(current.id),
+						'btn-primary': checkIfButtonIsSelected(current.id)}"
+		(click)="setUserChoice(current.id)">
+
+		{{current.name}} ({{current.latin}})
+		<span *ngIf="checkIfButtonIsSelected(current.id, true)">
+			 - <b class="black" >Selected</b>
+		</span>
+
+	</button>
+	<a *ngIf="inbetweenQuestions && current.id > 0" href="https://hembstudios.no/birdid/{{subsiteName}}/eBook.php?specieID={{current.id}}" target="_blank"><img src="../images/book.png"></a>
+	<br />
+</div>
+
+<br>
+
+<button class="btn btn-primary" (click)="onAnswerButtonClick()">Next Question</button>
+<br><br>
+<div *ngIf="disableHints == false">
+<button class="btn btn-info" [disabled]="disableHints" (click)="removeWrongAnswer()">Hint</button> Hints left: {{hints}}
+</div>
